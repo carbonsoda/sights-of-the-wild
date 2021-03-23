@@ -1,5 +1,5 @@
 import express from 'express';
-import * as db from './db.mjs';
+import * as db from './queries.mjs';
 import cors from 'cors';
 
 const app = express();
