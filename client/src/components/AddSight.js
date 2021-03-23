@@ -8,11 +8,25 @@ export default function AddSight() {
     const [email, setEmail] = React.useState('');
 
 
-    function submitForm(e) {
+    const submitForm = async (e) => {
         e.preventDefault();
 
         let body = { dateTime, name, location, healthyChk, email };
         console.log(body);
+
+        fetch('http://localhost:5000',
+            
+            {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(e => console.error(e.stack));
+        
     }
 
     return (
