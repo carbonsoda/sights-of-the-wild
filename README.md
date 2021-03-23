@@ -5,10 +5,13 @@
 
   - [Description](#description)
   - [Requirements](#project-requirements)
+  - [Installation]
 
 
 ### Description
-This project is a part of Techtonica's curriculum ([source]("https://github.com/Techtonica/curriculum/blob/main/projects/mern-pern-project.md")). 
+This project is a part of Techtonica's curriculum ([source](https://github.com/Techtonica/curriculum/blob/main/projects/mern-pern-project.md)).
+
+This app will use PostgreSQL, ReactJS, and Express.
 
 
 ### Project Requirements
@@ -25,4 +28,11 @@ There are [additional features](https://github.com/Techtonica/curriculum/blob/ma
 TODO
 
 
+### Installation
 
+All the required packages can be installed using the following command in the project directory:
+```
+npm install
+```
+
+First start the server by using `npm start` in that directory, then start the app by running `npm start` in the client directory.
