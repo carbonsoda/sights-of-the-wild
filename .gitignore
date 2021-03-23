@@ -3,3 +3,5 @@ client/node_modules
 
 server/package-lock.json
 animaltracker.code-workspace
+server/.env
+server/db_setup.js
