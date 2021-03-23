@@ -14,18 +14,7 @@ app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 })
 
-
-app.get('/', (req, res) => {
-    res.send('Hi!')
+app.get('/sightings', (req, res) => {
+    db.any('SELECT * FROM sightings')
+        .then(data => res.json(data))
 })
-
-
-
-db.any('SELECT * FROM species')
-    .then(function (data) {
-        console.log('DATA:', data)
-    })
-    .catch(function (error) {
-        console.log('ERROR:', error)
-    })
-
