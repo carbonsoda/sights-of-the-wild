@@ -7,8 +7,7 @@ export default function Sighting({ sighting }) {
     const temp_date = new Date(sighting.sighting_date);
     const date = new Intl.DateTimeFormat('default',
         { dateStyle: 'short', timeStyle: 'short' }).format(temp_date);
-
-    // TODO: add after checking {contact}'s format
+    
     const mailtoLink = `mailto:${sighter_email}?subject=${nickname} sighting`;
 
     return (
@@ -26,7 +25,7 @@ export default function Sighting({ sighting }) {
                 { location }
             </td>
             <td>
-                <a href={ sighter_email }>email</a>
+                <a href={ mailtoLink }>email</a>
             </td>
 
         </>
