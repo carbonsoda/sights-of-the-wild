@@ -22,9 +22,22 @@ app.get('/sightings', async (req, res) => {
 })
 
 app.post('/sightings', async (req, res) => {
+
     const body = req.body;
+    const { id } = await db.getUser(body.sighter_email);
+
+    body.sighter_id = id;
+    
     db.addSighting(body)
         .then(sighting => res.json(sighting))
         .catch(e => console.error(e.stack));
 })
+
+app.post('/user', async (req, res) => {
+    const { email } = req.body;
+
+    db.getUser(email)
+        .then(output => console.log(output));
+})
+
 

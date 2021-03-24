@@ -29,4 +29,17 @@ export const addSighting = async (body) => (
         + ' (${sighting_date}, ${name}, ${location}, ${is_healthy}, ${sighter_email}, ${sighter_id})'
         + ' RETURNING *',
         body)
+        .catch(e => console.error(e.stack))
 );
+
+export const getUser = async (email) => (
+    await db.one(
+        'SELECT id FROM users'
+        + ' WHERE sighter_email = $1',
+        [email]
+    ).catch(err => addUser(email))
+);
+
+export const addUser = async (email) => (
+    await db.one('INSERT INTO users (sighter_email) VALUES ($1) RETURNING id', [email])
+)
