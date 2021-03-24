@@ -5,7 +5,8 @@
 
   - [Description](#description)
   - [Requirements](#project-requirements)
-  - [Installation]
+  - [Installation](#installation)
+  - [Progress](#progress)
 
 
 ### Description
