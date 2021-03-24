@@ -22,11 +22,11 @@ export const getSightings = async () => (
 );
 
 export const addSighting = async (body) => (
-    await db.one('INSERT INTO sightings'
-        + ' (sighting_date, name, location, is_healthy, sighter_email)'
+    await db.one(
+        'INSERT INTO sightings'
+        + ' (sighting_date, name, location, is_healthy, sighter_email, sighter_id)'
         + ' VALUES'
-        + ' (${sighting_date}, ${name}, ${location}, ${is_healthy}, ${sighter_email})'
-        + ' ORDER BY sighting_date DESC'
+        + ' (${sighting_date}, ${name}, ${location}, ${is_healthy}, ${sighter_email}, ${sighter_id})'
         + ' RETURNING *',
         body)
 );
