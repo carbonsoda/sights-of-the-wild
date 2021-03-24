@@ -15,12 +15,16 @@ app.listen(port, () => {
 })
 
 
-app.get('/sightings',
-    async (req, res) => res.json(await db.getSightings()))
+app.get('/sightings', async (req, res) => {
+    db.getSightings()
+        .then(sightings => res.json(sightings))
+        .catch(e => console.error(e.stack));
+})
 
 app.post('/sightings', async (req, res) => {
     const body = req.body;
     db.addSighting(body)
-        .then(sighting => res.json(sighting));
+        .then(sighting => res.json(sighting))
+        .catch(e => console.error(e.stack));
 })
 
