@@ -40,7 +40,7 @@ export default function AddSight() {
 
             const body = { dateTime, name, location, healthyChk, email };
 
-            fetch('http://localhost:5000',
+            fetch('http://localhost:5000/sightings',
 
                 {
                     method: 'POST',
@@ -64,6 +64,7 @@ export default function AddSight() {
                 <label> Date & time seen:</label>
                 <input
                     type="datetime-local"
+                    value={ dateTime }
                     onChange={ e => setDateTime(e.target.value) }
                 />
                 <label> Animal name: </label>
