@@ -19,6 +19,8 @@ app.get('/sightings',
     async (req, res) => res.json(await db.getSightings()))
 
 app.post('/sightings', async (req, res) => {
-    // add post request here
+    const body = req.body;
+    db.addSighting(body)
+        .then(sighting => res.json(sighting));
 })
 

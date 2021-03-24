@@ -12,7 +12,13 @@ const db = pgp()({
     port: "5432"
 })
 
-export const getSightings = async () =>
-    db.any('SELECT * FROM sightings')
-        .catch(e => console.error(e.stack));
+export const getSightings = async () => await db.any('SELECT * FROM sightings');
 
+export const addSighting = async (body) => (
+    await db.one('INSERT INTO sightings'
+        + ' (sighting_date, name, location, is_healthy, sighter_email)'
+        + ' VALUES'
+        + ' (${sighting_date}, ${name}, ${location}, ${is_healthy}, ${sighter_email})'
+        + ' RETURNING *',
+        body)
+);
