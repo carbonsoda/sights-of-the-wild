@@ -6,6 +6,7 @@ import SightList from './components/SightList';
 
 function App() {
   const [sightings, setSightings] = React.useState([]);
+  const [allNames, setAllNames] = React.useState([]);
 
   const addSighting = async (body) => {
     fetch('http://localhost:5000/sightings',
@@ -27,14 +28,22 @@ function App() {
       .then(allSightings => setSightings(allSightings))
       .catch(e => console.error(e.stack));
   }
-  
+
+  const getNames = async () => {
+    fetch('http://localhost:5000/individuals')
+      .then(res => res.json())
+      .then(data => setAllNames(data))
+      .catch(e => console.error(e.stack));
+  }
+
   React.useEffect(() => {
     getSightings();
+    getNames();
   }, []);
 
   return (
     <div className="App">
-      <AddSight addSighting={ addSighting }/>
+      <AddSight addSighting={ addSighting } allNames={ allNames }/>
       <SightList sightings={ sightings } />
     </div>
   );

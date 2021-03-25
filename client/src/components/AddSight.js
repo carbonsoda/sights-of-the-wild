@@ -1,13 +1,12 @@
 import React from 'react';
 
-export default function AddSight({addSighting}) {
+export default function AddSight({ addSighting, allNames }) {
     const [date, setDate] = React.useState();
     const [time, setTime] = React.useState('12:00');
     const [name, setName] = React.useState('');
     const [location, setLocation] = React.useState('');
     const [healthyChk, setHealthyChk] = React.useState(false);
     const [email, setEmail] = React.useState('');
-    const [allNames, setAllNames] = React.use([]);
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -20,22 +19,11 @@ export default function AddSight({addSighting}) {
                 "sighter_email": email,
                 "is_healthy": healthyChk
             }
-
             addSighting(body);
         }
-
     }
 
     // TODO: select options are slow/laggy, figure out why
-    React.useEffect(() => {
-        const getNames = async () => {
-            fetch('http://localhost:5000/individuals')
-                .then(res => res.json())
-                .then(data => setAllNames(data))
-                .catch(e => console.error(e.stack));
-        }
-        getNames();
-    }, []);
 
     return (
         <>
