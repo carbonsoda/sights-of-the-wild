@@ -15,7 +15,7 @@ app.listen(port, () => {
 })
 
 
-ap.get('/individuals', async (req, res) => {
+app.get('/individuals', async (req, res) => {
     db.getIndividuals()
         .then(individuals => res.send(individuals))
         .catch(e => console.error(e.stack));
