@@ -8,6 +8,8 @@ export default function AddSight() {
     const [email, setEmail] = React.useState('');
     const [errors, setErrors] = React.useState('');
 
+    const [allNames, setAllNames] = React.useState([]);
+
     function validate() {
         let allErrors = [];
 
@@ -56,6 +58,30 @@ export default function AddSight() {
 
     }
 
+    // const getNames = () => {
+    //     const fetchData = async () => {
+    //         fetch('http://localhost:5000/individuals')
+    //             .then(res => res.json())
+    //             .then(data => setAllNames(data))
+    //             .catch(e => console.error(e.stack));
+    //     }
+    //     fetchData();
+    // }
+
+    // TODO: select options are slow/laggy, figure out why
+    React.useEffect(() => {
+        const fetchData = async () => {
+            fetch('http://localhost:5000/individuals')
+                .then(res => res.json())
+                .then(data => setAllNames(data))
+                .catch(e => console.error(e.stack));
+        }
+        // It's only being called when mounted first time
+        if (allNames.length < 1) {
+            fetchData();
+        }
+    }, []);
+
     return (
         <>
             <h2>Add a sighting</h2>
@@ -68,10 +94,23 @@ export default function AddSight() {
                     onChange={ e => setDateTime(e.target.value) }
                 />
                 <label> Animal name: </label>
-                <input
-                    type="text"
+                <select
+                    value={ name }
                     onChange={ e => setName(e.target.value) }
-                />
+                >
+                    <option value="">---individual---</option>
+                    {
+                        allNames.map(n => (
+                            <option
+                                value={ n.ind_id }
+                                key={ n.ind_id }
+                            >
+                                { n.nickname }
+                            </option>
+                        ))
+                    }
+
+                </select>
                 <label> Location: </label>
                 <input
                     type="text"
