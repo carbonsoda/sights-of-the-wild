@@ -18,7 +18,12 @@ export default function SightList({ sightings }) {
     const columns = [
         { field: 'date', headerName: 'Date', flex: .5 },
         { field: 'nickname', headerName: 'Name', flex: .5 },
-        { field: 'is_healthy', headerName: 'Healthy?', flex: .35 },
+        {
+            field: 'is_healthy', headerName: 'Healthy?', flex: .35,
+            valueFormatter: (params) => (
+                params ? "Yes" : "No"
+            )
+        },
         { field: 'location', headerName: 'Location', flex: .5 },
         {
             field: 'email', headerName: 'Contact',
@@ -52,6 +57,8 @@ export default function SightList({ sightings }) {
             <DataGrid
                 rows={ rows } columns={ columns }
                 pageSize={ 10 } autoHeight
+                className="sightingGrid"
+                
             />
         </div>
     );

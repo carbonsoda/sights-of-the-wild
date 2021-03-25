@@ -53,11 +53,15 @@ export default function AddSight({addSighting}) {
                     type="text"
                     onChange={ e => setLocation(e.target.value) }
                 />
-                <label> Seems healthy? </label>
-                <input
+                <label> Healthy? </label>
+                <label>
+                    <input
                     type="checkbox"
                     onChange={ () => setHealthyChk(!healthyChk) }
-                />
+                    />
+                    Yes
+                </label>
+                
                 <label> Contact email:</label>
                 <input
                     type="text"
