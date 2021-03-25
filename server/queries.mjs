@@ -13,7 +13,7 @@ const db = pgp()({
 })
 
 export const getSightings = async () => (
-    await db.any('SELECT s.sighting_date, i.nickname, s.location, s.is_healthy, s.sighter_email'
+    await db.any('SELECT s.s_id, s.sighting_date, i.nickname, s.location, s.is_healthy, s.sighter_email'
         + ' FROM sightings AS s'
         + ' INNER JOIN individuals AS i'
         + ' ON s.name = i.ind_id'
