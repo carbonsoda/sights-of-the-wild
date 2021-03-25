@@ -15,6 +15,12 @@ app.listen(port, () => {
 })
 
 
+ap.get('/individuals', async (req, res) => {
+    db.getIndividuals()
+        .then(individuals => res.send(individuals))
+        .catch(e => console.error(e.stack));
+})
+
 app.get('/sightings', async (req, res) => {
     db.getSightings()
         .then(sightings => res.json(sightings))
@@ -40,5 +46,4 @@ app.post('/user', async (req, res) => {
     db.getUser(email)
         .then(output => console.log(output));
 })
-
 

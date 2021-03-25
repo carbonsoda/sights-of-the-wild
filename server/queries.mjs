@@ -32,6 +32,10 @@ export const addSighting = async (body) => (
         .catch(e => console.error(e.stack))
 );
 
+export const getIndividuals = async => (
+    await db.any('SELECT (ind_id, nickname) FROM individuals ORDER BY nickname')
+);
+
 export const getUser = async (email) => (
     await db.one(
         'SELECT id FROM users'
