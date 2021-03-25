@@ -26,10 +26,10 @@ export default function AddSight({addSighting}) {
     }
 
     return (
-        <>
+        <div className="container">
             <h2>Add a sighting</h2>
 
-            <form className="add" onSubmit={ submitForm }>
+            <form className="addForm" onSubmit={ submitForm }>
                 <label> Date seen:</label>
                 <input
                     type="date"
@@ -68,6 +68,6 @@ export default function AddSight({addSighting}) {
                 <button type="submit"> Submit </button>
             </form>
 
-        </>
+        </div>
     );
 }
