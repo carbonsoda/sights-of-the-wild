@@ -29,7 +29,7 @@ export default function AddSight({addSighting}) {
         <>
             <h2>Add a sighting</h2>
 
-            <form class="add" onSubmit={ submitForm }>
+            <form className="add" onSubmit={ submitForm }>
                 <label> Date seen:</label>
                 <input
                     type="date"
