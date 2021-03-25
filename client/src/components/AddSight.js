@@ -7,35 +7,6 @@ export default function AddSight({addSighting}) {
     const [location, setLocation] = React.useState('');
     const [healthyChk, setHealthyChk] = React.useState(false);
     const [email, setEmail] = React.useState('');
-    const [errors, setErrors] = React.useState('');
-
-    function validate() {
-        let allErrors = [];
-
-        if (!date) {
-            allErrors.push('date')
-        }
-        if (!time) {
-            allErrors.push('time')
-        }
-        if (!name) {
-            allErrors.push('name')
-        }
-        if (!location) {
-            allErrors.push('location')
-        }
-        if (!email) {
-            allErrors.push('email')
-        }
-
-        if (allErrors) {
-            setErrors(`Incomplete ${allErrors.join(', ')}`);
-            return false;
-        }
-
-        setErrors('');
-        return true;
-    }
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -93,7 +64,7 @@ export default function AddSight({addSighting}) {
                     onChange={ e => setEmail(e.target.value) }
                 />
 
-                <span>{ errors }</span>
+                <span> </span>
                 <button type="submit"> Submit </button>
             </form>
 
