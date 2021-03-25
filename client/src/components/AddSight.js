@@ -58,28 +58,15 @@ export default function AddSight() {
 
     }
 
-    // const getNames = () => {
-    //     const fetchData = async () => {
-    //         fetch('http://localhost:5000/individuals')
-    //             .then(res => res.json())
-    //             .then(data => setAllNames(data))
-    //             .catch(e => console.error(e.stack));
-    //     }
-    //     fetchData();
-    // }
-
     // TODO: select options are slow/laggy, figure out why
     React.useEffect(() => {
-        const fetchData = async () => {
+        const getNames = async () => {
             fetch('http://localhost:5000/individuals')
                 .then(res => res.json())
                 .then(data => setAllNames(data))
                 .catch(e => console.error(e.stack));
         }
-        // It's only being called when mounted first time
-        if (allNames.length < 1) {
-            fetchData();
-        }
+        getNames();
     }, []);
 
     return (
