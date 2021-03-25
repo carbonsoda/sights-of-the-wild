@@ -15,17 +15,11 @@ export default function SightList({ sightings }) {
             )
     )
 
-    const formatEmail = (oldEmail) => (
-        <a
-            href={ `mailto:${oldEmail}?subject=sighting` }>
-            email</a>
-    )
-
     const columns = [
-        { field: 'date', headerName: 'Date', flex:.5 },
-        { field: 'nickname', headerName: 'Name', flex:.5 },
-        { field: 'is_healthy', headerName: 'Healthy?', flex:.35 },
-        { field: 'location', headerName: 'Location', flex:.5 },
+        { field: 'date', headerName: 'Date', flex: .5 },
+        { field: 'nickname', headerName: 'Name', flex: .5 },
+        { field: 'is_healthy', headerName: 'Healthy?', flex: .35 },
+        { field: 'location', headerName: 'Location', flex: .5 },
         {
             field: 'email', headerName: 'Contact',
             flex: .32,
@@ -44,22 +38,21 @@ export default function SightList({ sightings }) {
         nickname: sighting.nickname,
         is_healthy: sighting.is_healthy,
         location: sighting.location,
-        email: formatEmail(sighting.sighter_email)
+        email: sighting.sighter_email
     })
     );
 
 
     return (
-        <>
+        <div
+            className="sightList"
+        >
             <h2>Sightings List</h2>
-            <div
-                style={ { height: '100%', width: 700 } }
-            >
-                <DataGrid
-                    rows={ rows } columns={ columns }
-                    pageSize={ 10 } autoHeight
-                />
-            </div>
-        </>
+
+            <DataGrid
+                rows={ rows } columns={ columns }
+                pageSize={ 10 } autoHeight
+            />
+        </div>
     );
 }
