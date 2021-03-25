@@ -1,7 +1,8 @@
 import React from 'react';
 
-export default function AddSight() {
-    const [dateTime, setDateTime] = React.useState();
+export default function AddSight({addSighting}) {
+    const [date, setDate] = React.useState();
+    const [time, setTime] = React.useState('12:00');
     const [name, setName] = React.useState('');
     const [location, setLocation] = React.useState('');
     const [healthyChk, setHealthyChk] = React.useState(false);
@@ -11,8 +12,11 @@ export default function AddSight() {
     function validate() {
         let allErrors = [];
 
-        if (!dateTime) {
-            allErrors.push('time and/or date')
+        if (!date) {
+            allErrors.push('date')
+        }
+        if (!time) {
+            allErrors.push('time')
         }
         if (!name) {
             allErrors.push('name')
@@ -61,12 +65,19 @@ export default function AddSight() {
             <h2>Add a sighting</h2>
 
             <form class="add" onSubmit={ submitForm }>
-                <label> Date & time seen:</label>
+                <label> Date seen:</label>
                 <input
-                    type="datetime-local"
-                    value={ dateTime }
-                    onChange={ e => setDateTime(e.target.value) }
+                    type="date"
+                    value={ date }
+                    onChange={ e => setDate(e.target.value) }
                 />
+                <label> Time seen:</label>
+                <input
+                    type="time"
+                    value={time}
+                    pattern="[0-9]{2}:[0-9]{2}"
+                    onChange={ e => setTime(e.target.value) }
+                ></input>
                 <label> Animal name: </label>
                 <input
                     type="text"
@@ -77,7 +88,7 @@ export default function AddSight() {
                     type="text"
                     onChange={ e => setLocation(e.target.value) }
                 />
-                <label> Healthy </label>
+                <label> Seems healthy? </label>
                 <input
                     type="checkbox"
                     onChange={ () => setHealthyChk(!healthyChk) }
