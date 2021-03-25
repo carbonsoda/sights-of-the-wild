@@ -26,10 +26,10 @@ export default function AddSight({ addSighting, allNames }) {
     // TODO: select options are slow/laggy, figure out why
 
     return (
-        <>
+        <div className="container">
             <h2>Add a sighting</h2>
 
-            <form class="add" onSubmit={ submitForm }>
+            <form className="addForm" onSubmit={ submitForm }>
                 <label> Date seen:</label>
                 <input
                     type="date"
@@ -66,11 +66,15 @@ export default function AddSight({ addSighting, allNames }) {
                     type="text"
                     onChange={ e => setLocation(e.target.value) }
                 />
-                <label> Seems healthy? </label>
-                <input
+                <label> Healthy? </label>
+                <label>
+                    <input
                     type="checkbox"
                     onChange={ () => setHealthyChk(!healthyChk) }
-                />
+                    />
+                    Yes
+                </label>
+                
                 <label> Contact email:</label>
                 <input
                     type="text"
@@ -81,6 +85,6 @@ export default function AddSight({ addSighting, allNames }) {
                 <button type="submit"> Submit </button>
             </form>
 
-        </>
+        </div>
     );
 }
