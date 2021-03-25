@@ -40,22 +40,16 @@ export default function AddSight({addSighting}) {
     const submitForm = async (e) => {
         e.preventDefault();
 
-        if (validate()) {
+        if (date && time && name && location && email) {
+            const body = {
+                "sighting_date": new Date(date + ' ' + time),
+                "name": name,
+                "location": location,
+                "sighter_email": email,
+                "is_healthy": healthyChk
+            }
 
-            const body = { dateTime, name, location, healthyChk, email };
-
-            fetch('http://localhost:5000/sightings',
-
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
-                    body: JSON.stringify(body)
-                })
-                .then(res => res.json())
-                .then(data => console.log(data))
-                .catch(e => console.error(e.stack));
+            addSighting(body);
         }
 
     }

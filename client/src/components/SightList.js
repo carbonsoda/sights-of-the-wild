@@ -1,19 +1,7 @@
 import React from 'react';
 import Sighting from './Sighting';
 
-export default function SightList() {
-    const [sightings, setSightings] = React.useState([]);
-
-    const getSightings = async () => {
-        fetch('http://localhost:5000/sightings')
-            .then(res => res.json())
-            .then(allSightings => setSightings(allSightings))
-            .catch(e => console.error(e.stack));
-    }
-
-    React.useEffect(() => {
-        getSightings();
-    }, []);
+export default function SightList({ sightings }) {
 
     return (
         <>
