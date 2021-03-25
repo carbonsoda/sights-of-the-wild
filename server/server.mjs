@@ -27,6 +27,7 @@ app.post('/sightings', async (req, res) => {
     const { id } = await db.getUser(body.sighter_email);
 
     body.sighter_id = id;
+    body.record_created = Date.now() / 1000.0;
     
     db.addSighting(body)
         .then(sighting => res.json(sighting))

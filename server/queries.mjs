@@ -24,9 +24,9 @@ export const getSightings = async () => (
 export const addSighting = async (body) => (
     await db.one(
         'INSERT INTO sightings'
-        + ' (sighting_date, name, location, is_healthy, sighter_email, sighter_id)'
+        + ' (sighting_date, name, location, is_healthy, sighter_email, sighter_id, record_created)'
         + ' VALUES'
-        + ' (${sighting_date}, ${name}, ${location}, ${is_healthy}, ${sighter_email}, ${sighter_id})'
+        + ' (${sighting_date}, ${name}, ${location}, ${is_healthy}, ${sighter_email}, ${sighter_id}, to_timestamp(${record_created}))'
         + ' RETURNING *',
         body)
         .catch(e => console.error(e.stack))
