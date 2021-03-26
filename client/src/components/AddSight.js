@@ -1,4 +1,8 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default function AddSight({ addSighting, allNames }) {
     const [date, setDate] = React.useState();
@@ -23,7 +27,6 @@ export default function AddSight({ addSighting, allNames }) {
         }
     }
 
-    // TODO: select options are slow/laggy, figure out why
 
     return (
         <div className="container">
@@ -42,9 +45,9 @@ export default function AddSight({ addSighting, allNames }) {
                     value={time}
                     pattern="[0-9]{2}:[0-9]{2}"
                     onChange={ e => setTime(e.target.value) }
-                ></input>
+                />
                 <label> Animal name: </label>
-                <select
+                <Select
                     value={ name }
                     onChange={ e => setName(e.target.value) }
                 >
@@ -60,24 +63,30 @@ export default function AddSight({ addSighting, allNames }) {
                         ))
                     }
 
-                </select>
+                </Select>
+                
                 <label> Location: </label>
-                <input
-                    type="text"
+                <TextField
+                    required
+                    label="Location"
+                    defaultValue={ location }
                     onChange={ e => setLocation(e.target.value) }
                 />
+                
                 <label> Healthy? </label>
-                <label>
-                    <input
-                    type="checkbox"
+                <FormControlLabel
+                    value={ healthyChk }
+                    control={ <Checkbox color="primary" /> }
+                    label="Yes"
+                    labelPlacement="end"
                     onChange={ () => setHealthyChk(!healthyChk) }
-                    />
-                    Yes
-                </label>
+                />
                 
                 <label> Contact email:</label>
-                <input
-                    type="text"
+                <TextField
+                    required
+                    label="Email"
+                    defaultValue={ email }
                     onChange={ e => setEmail(e.target.value) }
                 />
 

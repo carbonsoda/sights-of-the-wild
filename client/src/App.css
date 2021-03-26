@@ -12,12 +12,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Exo&family=Public+Sans&family=Roboto&display=swap');
 body {
-  background-color: hsla(353, 100%, 97%, 1);
+  background-color: hsla(5, 8%, 26%, 1);
 }
 
 h2 {
   font-size: 1.5rem;
   font-family: 'Public Sans';
+  color: rgb(255, 248, 249);
 }
 
 .App {
@@ -41,15 +42,16 @@ h2 {
 .addForm {
   border: 2px solid;
   border-radius: 25px;
-  border-color: hsla(5, 8%, 26%, 1);
-  background-color: hsla(5, 8%, 26%, 1);
-  color: white;
+  border-color: hsla(352, 19%, 84%, 1);
+  background-color: hsla(351, 51%, 93%, 1);
   padding: 1.2em;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
   text-align: left;
+  align-items: center;
+  justify-content: normal;
 }
 
 input {
